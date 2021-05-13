@@ -98,7 +98,7 @@ class TaskListViewController: UITableViewController {
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
         
         taskList[indexPath.row].title = taskName
-        tableView.reloadData()
+        tableView.reloadRows(at: [indexPath], with: .automatic)
         
         if context.hasChanges {
             do {
