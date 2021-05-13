@@ -8,10 +8,6 @@
 import UIKit
 import CoreData
 
-protocol TaskViewControllerDelegate {
-    func reloadData()
-}
-
 class TaskListViewController: UITableViewController {
     
     private let context = StorageManager.shared.persistentContainer.viewContext
@@ -152,9 +148,3 @@ extension TaskListViewController {
     }
 }
 
-// MARK: - TaskViewControllereDelegate
-extension TaskListViewController: TaskViewControllerDelegate {
-    func reloadData() {
-        tableView.reloadData()
-    }
-}
