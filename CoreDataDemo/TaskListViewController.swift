@@ -8,6 +8,10 @@
 import UIKit
 import CoreData
 
+protocol TaskViewControllerDelegate {
+    func reloadData()
+}
+
 class TaskListViewController: UITableViewController {
     
     private let context = StorageManager.shared.persistentContainer.viewContext
@@ -145,5 +149,12 @@ extension TaskListViewController {
         guard let title = taskList[indexPath.row].title else { return }
         
         showAlert(with: title, and: "Rename title?")
+    }
+}
+
+// MARK: - TaskViewControllereDelegate
+extension TaskListViewController: TaskViewControllerDelegate {
+    func reloadData() {
+        tableView.reloadData()
     }
 }
